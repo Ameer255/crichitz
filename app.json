@@ -1,0 +1,12 @@
+{
+  "name": "CricHitz",
+  "displayName": "CricHitz",
+  "expo": {
+    "name": "CricHitz",
+    "slug": "CricHitz",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
