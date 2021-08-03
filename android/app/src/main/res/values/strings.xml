@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">CricHitz</string>
+    <string name="app_name">Cric Hitz</string>
+	 <string moduleConfig="true" name="CodePushDeploymentKey">neBVjfCOK4WXwyTT0Wa2ye9KQDuviq1fXGZAO</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.crichitz;
+package com.ahbtech.crichitz;
 
 import android.os.Bundle;
 

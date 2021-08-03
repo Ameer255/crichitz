@@ -18,6 +18,14 @@ target 'CricHitz' do
   # Note that if you have use_frameworks! enabled, Flipper will not work.
   #
    use_flipper!
+   pod 'RNFS', :path => '../node_modules/react-native-fs'
+
+   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+   pod 'react-native-video', :path => '../node_modules/react-native-video'
+
+   pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
    post_install do |installer|
      flipper_post_install(installer)
    end

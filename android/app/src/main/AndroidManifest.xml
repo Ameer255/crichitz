@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.crichitz">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ahbtech.crichitz">
   <uses-permission android:name="android.permission.INTERNET"/>
   <!-- OPTIONAL PERMISSIONS, REMOVE WHATEVER YOU DO NOT NEED -->
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
@@ -9,6 +9,7 @@
   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
   <!-- These require runtime permissions on M -->
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
   <uses-permission android:name="android.permission.CAMERA"/>
@@ -24,10 +25,11 @@
   <application
     android:name=".MainApplication"
     android:label="@string/app_name"
-    android:icon="@mipmap/ic_launcher"
+	android:icon="@mipmap/ic_launcher"
     android:roundIcon="@mipmap/ic_launcher_round"
-    android:allowBackup="false"
+    android:allowBackup="true"
     android:theme="@style/AppTheme"
+	android:usesCleartextTraffic="true"
   >
     <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="YOUR-APP-URL-HERE"/>
     <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="YOUR-APP-SDK-VERSION-HERE"/>
