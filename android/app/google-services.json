@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "998642744795",
+    "project_id": "crichitz-3309f",
+    "storage_bucket": "crichitz-3309f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998642744795:android:4d1fbe33659bc30395fbfe",
+        "android_client_info": {
+          "package_name": "com.ahbtech.crichitz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998642744795-c1reha9t52l7st16ergd78ps9c67bi2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAemcsiBsyMRKQuLAxUeKc4FLim9h4OJ2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998642744795-c1reha9t52l7st16ergd78ps9c67bi2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

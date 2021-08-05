@@ -55,11 +55,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
-	        			new MainReactPackage();
+	        new MainReactPackage();
             new LottiePackage();
             new ReactVideoPackage();
             new VectorIconsPackage();
-						new ClearCachePackage();
+			new ClearCachePackage();
 	  
 	  return packages;
 

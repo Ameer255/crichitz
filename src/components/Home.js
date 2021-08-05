@@ -1,7 +1,7 @@
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Actions, Router, Scene, Stack } from 'react-native-router-flux';
-import { StyleSheet, Text, View, TouchableOpacity, BackHandler, StatusBar} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, BackHandler, StatusBar, Alert} from 'react-native';
 import {useNetInfo} from "@react-native-community/netinfo";
 import { DrawerActions } from 'react-navigation-drawer';
 import clear from 'react-native-clear-cache';
@@ -12,8 +12,18 @@ import Hamb from './SideNav';
 import VideoPlayer from './Video';
 import ErrorMessage from './Error';
 import SmartCric from './SmartCric';
+import Ad from './ads';
+import admob, { MaxAdContentRating, BannerAd, AdEventType, InterstitialAd, TestIds, BannerAdSize } from '@react-native-firebase/admob';
+
+let adUnitId = TestIds.INTERSTITIAL;
+
+const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+  requestNonPersonalizedAdsOnly: true,
+  keywords: ['fashion', 'clothing'],
+});
 
 export function Home({navigation}) {
+  let [loaded, setLoaded] = React.useState(false)
 
 let netInfor = useNetInfo();
 
@@ -24,6 +34,13 @@ let netInfor = useNetInfo();
 // }
 
   React.useEffect(()=>{
+
+    const eventListener = interstitial.onAdEvent(type => {
+      if (type === AdEventType.LOADED) {
+        setLoaded(true);
+      }
+    });
+    interstitial.load();
     clear.runClearCache(()=>{
       console.log('Cache cleared')
     })
@@ -44,14 +61,28 @@ let netInfor = useNetInfo();
         Actions.pop()
       }
       
+      admob()
+      .setRequestConfiguration({
+        // Update all future requests suitable for parental guidance
+        maxAdContentRating: MaxAdContentRating.PG,
 
+        // Indicates that you want your content treated as child-directed for purposes of COPPA.
+        tagForChildDirectedTreatment: true,
+
+        // Indicates that you want the ad request to be handled in a
+        // manner suitable for users under the age of consent.
+        tagForUnderAgeOfConsent: true,
+      })
+      .then(() => {
+        // Request config successfully set!
+      });
+      
 })
 
     return(()=>{
       BackHandler.removeEventListener('hardwareBackPress')
 
-
-   
+      eventListener();
     })
   
   },[])
@@ -84,7 +115,15 @@ let netInfor = useNetInfo();
      }
 
      const goToSmartcric = () => {
+      
+      if(loaded){
+      interstitial.show();
       Actions.smartcric();
+      }
+      else{
+        Alert.alert("Ad not loaded")
+        Actions.smartcric();
+      }
      }
 
   return (
@@ -117,6 +156,10 @@ let netInfor = useNetInfo();
           
       
       </TouchableOpacity>
+      <BannerAd
+          size={BannerAdSize.LARGE_BANNER}
+          unitId={TestIds.BANNER}
+        />
   </View>
 
   
@@ -174,7 +217,7 @@ export const HomeRouter =({navigation})=>{
         <Hamb  onPress={()=>navigation.dispatch(DrawerActions.openDrawer())}/>
   <Router>
     <Stack key='root'>
-      <Scene key='home' component={Home} initial hideNavBar />
+      <Scene key='home' component={Home} hideNavBar />
       <Scene key='video' component={VideoPlayer}  hideNavBar/>
       <Scene key='smartcric' component={SmartCric}  hideNavBar/>
       <Scene key='ErrorMessage' component={ErrorMessage}  hideNavBar/>

@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 
@@ -142,6 +143,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+		
     }
     splits {
         abi {
@@ -198,7 +200,10 @@ android {
 dependencies {
      compile project(':lottie-react-native')
      compile project(':react-native-video')
+	 implementation platform('com.google.firebase:firebase-bom:28.3.0')
+	 implementation 'com.google.firebase:firebase-analytics'
 	 implementation "androidx.appcompat:appcompat:1.0.0"
+	 implementation 'com.android.support:multidex:1.0.3'
      compile project(':reactNativeClearCache')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
